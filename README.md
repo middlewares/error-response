@@ -6,11 +6,11 @@
 [![Quality Score][ico-scrutinizer]][link-scrutinizer]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Middleware to format responses with HTTP error codes (4xx-5xx).
+Middleware to format responses with HTTP error codes (4xx-5xx). Useful to create pretty 404 or 500 error pages.
 
 ## Requirements
 
-* PHP >= 7.0
+* PHP >= 7.2
 * A [PSR-7 http library](https://github.com/middlewares/awesome-psr15-middlewares#psr-7-implementations)
 * A [PSR-15 middleware dispatcher](https://github.com/middlewares/awesome-psr15-middlewares#dispatcher)
 
@@ -22,7 +22,9 @@ This package is installable and autoloadable via Composer as [middlewares/error-
 composer require middlewares/error-response
 ```
 
-## Example
+## Usage
+
+This package includes two basic responders: for html and json responses, but you can create your own by implementing the `Middlewares\ErrorResponder\ResponderInterface`.
 
 ```php
 use Middlewares\ErrorResponse;
