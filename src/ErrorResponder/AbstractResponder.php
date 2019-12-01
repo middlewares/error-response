@@ -37,13 +37,13 @@ abstract class AbstractResponder implements ResponderInterface
         $statusCode = (string) $response->getStatusCode();
         $contentType = $response->getHeaderLine('Content-Type');
 
-        foreach ($this->statusCodes as $exp) {
-            if (!self::matches($statusCode, (string) $exp)) {
+        foreach ($this->statusCodes as $statusExp) {
+            if (!self::matches($statusCode, (string) $statusExp)) {
                 continue;
             }
 
-            foreach ($this->contentTypes as $exp) {
-                if (self::matches($contentType, $exp)) {
+            foreach ($this->contentTypes as $typeExp) {
+                if (self::matches($contentType, $typeExp)) {
                     return true;
                 }
             }
