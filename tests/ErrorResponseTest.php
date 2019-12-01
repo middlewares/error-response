@@ -50,10 +50,7 @@ HTML;
         $request = Factory::createServerRequest('GET', '/');
 
         $response = Dispatcher::run([
-            new ErrorResponse([
-                new HtmlResponder(),
-                new JsonResponder(),
-            ]),
+            new ErrorResponse(),
             function ($req, $next) {
                 return Factory::createResponse(500)->withHeader('Content-Type', 'application/json');
             },

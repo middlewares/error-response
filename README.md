@@ -22,23 +22,30 @@ This package is installable and autoloadable via Composer as [middlewares/error-
 composer require middlewares/error-response
 ```
 
-## Usage
-
-This package includes two basic responders: for html and json responses, but you can create your own by implementing the `Middlewares\ErrorResponder\ResponderInterface`.
+### Example
 
 ```php
 use Middlewares\ErrorResponse;
-use Middlewares\ErrorResponder\HtmlResponder;
-use Middlewares\ErrorResponder\JsonResponder;
 
-$dispatcher = new Dispatcher([
-    new Middlewares\ErrorResponse([
-        new HtmlResponder(),
-        new JsonResponder()
-    ])
+Dispatcher::run([
+    new Middlewares\ErrorResponse()
 ]);
+```
 
-$response = $dispatcher->dispatch(new ServerRequest());
+## Usage
+
+The constructor accepts an array of responders, that must implement the `Middlewares\ErrorResponder\ResponderInterface`.
+This package includes two basic responders: for html and json responses, that are enabled by default if no responders are passed.
+
+```php
+//The default responders (for html and js)
+$responder = new Middlewares\ErrorResponse();
+
+//Use your custom responders
+$responder = new Middlewares\ErrorResponse([
+    new MyHtmlResponder(),
+    new MyJsonResponder()
+]);
 ```
 
 ---

@@ -15,8 +15,15 @@ class ErrorResponse implements MiddlewareInterface
      */
     private $responders = [];
 
-    public function __construct(array $responders)
+    public function __construct(array $responders = null)
     {
+        if ($responders === null) {
+            $responders = [
+                new ErrorResponder\HtmlResponder(),
+                new ErrorResponder\JsonResponder(),
+            ];
+        }
+
         $this->responders = $responders;
     }
 
