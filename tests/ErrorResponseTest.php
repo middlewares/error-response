@@ -21,7 +21,7 @@ class ErrorResponseTest extends TestCase
                 new JsonResponder(),
             ]),
             function ($req, $next) {
-                return Factory::createResponse(404)->withHeader('Content-Type', 'text/html');
+                return Factory::createResponse(404)->withHeader('Content-Type', 'text/HTML; charset=UTF-8');
             },
         ], $request);
 

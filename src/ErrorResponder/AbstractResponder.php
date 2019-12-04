@@ -70,6 +70,6 @@ abstract class AbstractResponder implements ResponderInterface
             return (bool) \preg_match($exp, $value);
         }
 
-        return $exp === $value;
+        return stripos($value, $exp) === 0;
     }
 }
