@@ -10,16 +10,24 @@ use Psr\Http\Message\StreamFactoryInterface;
 
 abstract class AbstractResponder implements ResponderInterface
 {
-    /** @var StreamFactoryInterface */
+    /** @var StreamFactoryInterface|null */
     protected $streamFactory;
 
+    /** @var array<string>|null */
     protected $statusCodes = ['/^(4|5)\d\d/'];
+
+    /** @var array<string>|null */
     protected $contentTypes = [];
 
+    /**
+     * @param StreamFactoryInterface|null $streamFactory
+     * @param array<string>|null $statusCodes
+     * @param array<string>|null $contentTypes
+     */
     public function __construct(
-        StreamFactoryInterface $streamFactory = null,
-        array $statusCodes = null,
-        array $contentTypes = null
+        ?StreamFactoryInterface $streamFactory = null,
+        ?array $statusCodes = null,
+        ?array $contentTypes = null
     ) {
         $this->streamFactory = $streamFactory ?? Factory::getStreamFactory();
 

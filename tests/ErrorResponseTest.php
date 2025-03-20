@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Middlewares\Tests;
 
 use Middlewares\ErrorResponder\HtmlResponder;
@@ -11,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 class ErrorResponseTest extends TestCase
 {
-    public function testHtmlErrorResponse()
+    public function testHtmlErrorResponse(): void
     {
         $request = Factory::createServerRequest('GET', '/');
 
@@ -45,7 +47,7 @@ HTML;
         $this->assertEquals($content, (string) $response->getBody());
     }
 
-    public function testJsonErrorResponse()
+    public function testJsonErrorResponse(): void
     {
         $request = Factory::createServerRequest('GET', '/');
 
