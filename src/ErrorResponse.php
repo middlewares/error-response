@@ -3,6 +3,9 @@ declare(strict_types = 1);
 
 namespace Middlewares;
 
+use Middlewares\ErrorResponder\HtmlResponder;
+use Middlewares\ErrorResponder\JsonResponder;
+use Middlewares\ErrorResponder\ResponderInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -10,17 +13,18 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class ErrorResponse implements MiddlewareInterface
 {
-    /**
-     * @var ErrorResponder\ResponderInterface[]
-     */
-    private $responders = [];
+    /** @var ResponderInterface[] */
+    private $responders;
 
-    public function __construct(array $responders = null)
+    /**
+     * @param ResponderInterface[]|null $responders
+     */
+    public function __construct(?array $responders = null)
     {
         if ($responders === null) {
             $responders = [
-                new ErrorResponder\HtmlResponder(),
-                new ErrorResponder\JsonResponder(),
+                new HtmlResponder(),
+                new JsonResponder(),
             ];
         }
 
