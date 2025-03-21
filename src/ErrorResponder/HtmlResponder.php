@@ -5,6 +5,7 @@ namespace Middlewares\ErrorResponder;
 
 class HtmlResponder extends AbstractResponder
 {
+    /** @var string[] */
     protected $contentTypes = ['text/html'];
 
     public function getBodyContent(int $code, string $message): string

@@ -13,9 +13,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class ErrorResponse implements MiddlewareInterface
 {
-    /**
-     * @var ResponderInterface[]|null
-     */
+    /** @var ResponderInterface[] */
     private $responders;
 
     /**

@@ -10,19 +10,19 @@ use Psr\Http\Message\StreamFactoryInterface;
 
 abstract class AbstractResponder implements ResponderInterface
 {
-    /** @var StreamFactoryInterface|null */
+    /** @var StreamFactoryInterface */
     protected $streamFactory;
 
-    /** @var array<string>|null */
+    /** @var string[] */
     protected $statusCodes = ['/^(4|5)\d\d/'];
 
-    /** @var array<string>|null */
+    /** @var string[] */
     protected $contentTypes = [];
 
     /**
      * @param StreamFactoryInterface|null $streamFactory
-     * @param array<string>|null $statusCodes
-     * @param array<string>|null $contentTypes
+     * @param string[]|null               $statusCodes
+     * @param string[]|null               $contentTypes
      */
     public function __construct(
         ?StreamFactoryInterface $streamFactory = null,
