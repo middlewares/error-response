@@ -13,13 +13,21 @@ abstract class AbstractResponder implements ResponderInterface
     /** @var StreamFactoryInterface */
     protected $streamFactory;
 
+    /** @var string[] */
     protected $statusCodes = ['/^(4|5)\d\d/'];
+
+    /** @var string[] */
     protected $contentTypes = [];
 
+    /**
+     * @param StreamFactoryInterface|null $streamFactory
+     * @param string[]|null               $statusCodes
+     * @param string[]|null               $contentTypes
+     */
     public function __construct(
-        StreamFactoryInterface $streamFactory = null,
-        array $statusCodes = null,
-        array $contentTypes = null
+        ?StreamFactoryInterface $streamFactory = null,
+        ?array $statusCodes = null,
+        ?array $contentTypes = null
     ) {
         $this->streamFactory = $streamFactory ?? Factory::getStreamFactory();
 
